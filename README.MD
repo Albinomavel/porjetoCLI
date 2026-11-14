@@ -44,8 +44,9 @@ O projeto foi desenvolvido utilizando Golang como linguagem de programação, fr
 
 ## 💻 Como executar
 
+Para compilar e gerar o executável do projeto:
+
 ```bash
-go run main.go
-```
+go build -o projectCLI main.go
 
 ---
