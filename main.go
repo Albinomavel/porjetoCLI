@@ -12,7 +12,15 @@ var baseStyle = lipgloss.NewStyle().
 	Border(lipgloss.NormalBorder()).
 	BorderForeground(lipgloss.Color("100"))
 
+type appState int
+
+const (
+	stateMenu appState = iota
+	stateResult
+)
+
 type model struct {
+	state appState
 	table table.Model
 }
 
@@ -24,15 +32,27 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	case tea.KeyPressMsg:
 		switch msg.String() {
 		case "esc":
+			if m.state == stateResult {
+				m.state = stateMenu
+				m.table = tableMenu()
+				return m, nil
+			}
+			return m, tea.Quit
+		case "q", "ctrl+c":
+			return m, tea.Quit
+		case "enter":
+			if m.state == stateMenu {
+				paisSelecionado := m.table.SelectedRow()[0]
+				m.table = tableResult(paisSelecionado)
+				m.state = stateResult
+				return m, nil
+			}
+		case "f":
 			if m.table.Focused() {
 				m.table.Blur()
 			} else {
 				m.table.Focus()
 			}
-		case "q", "ctrl+c":
-			return m, tea.Quit
-		case "enter":
-			return m, tea.Batch(tea.Printf("Selected %s!", m.table.SelectedRow()[0]))
 		}
 	}
 	m.table, cmd = m.table.Update(msg)
@@ -42,9 +62,10 @@ func (m model) View() tea.View {
 	return tea.NewView(baseStyle.Render(m.table.View()) + "\n " + m.table.HelpView() + "\n")
 }
 
-func main() {
+func tableMenu() table.Model {
+
 	columns := []table.Column{
-		{Title: "Country clock", Width: 42},
+		{Title: "horário mundial", Width: 42},
 	}
 
 	rows := []table.Row{
@@ -54,7 +75,7 @@ func main() {
 		{"🇪🇸 Espanha"},
 		{"🇨🇳 China"},
 	}
-	t := table.New(
+	menuT := table.New(
 		table.WithColumns(columns),
 		table.WithRows(rows),
 		table.WithFocused(true),
@@ -72,15 +93,51 @@ func main() {
 		Background(lipgloss.Color("16")).
 		BorderBottom(true).
 		Bold(false)
-	t.SetStyles(s)
+	menuT.SetStyles(s)
 
-	m := model{t}
+	return menuT
+}
+
+func tableResult(paisSelecionado string) table.Model {
+	titulo := fmt.Sprintf("horario mundial: %s", paisSelecionado)
+	columns := []table.Column{
+		{Title: titulo, Width: 42},
+	}
+	rows := []table.Row{
+		{"🕛"},
+		{"ola, isto é apenas um teste"},
+	}
+	resultTable := table.New(
+		table.WithColumns(columns),
+		table.WithRows(rows),
+		table.WithFocused(false),
+		table.WithHeight(3),
+		table.WithWidth(30),
+	)
+	s := table.DefaultStyles()
+	s.Header = s.Header.
+		BorderStyle(lipgloss.NormalBorder()).
+		BorderForeground(lipgloss.Color("30")).
+		BorderBottom(true).
+		Bold(false)
+	s.Selected = s.Selected.
+		Foreground(lipgloss.Color("229")).
+		Background(lipgloss.Color("16")).
+		BorderBottom(true).
+		Bold(false)
+	resultTable.SetStyles(s)
+	return resultTable
+}
+
+func main() {
+
+	m := model{table: tableMenu()}
 	if _, err := tea.NewProgram(m).Run(); err != nil {
 		fmt.Println("Error running program:", err)
 	}
 }
 
-//PYONGYANG
+//SHANGAI
 //BUEINOS AIRES
 //MADRI
 //MOSCOU

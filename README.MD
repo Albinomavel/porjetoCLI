@@ -28,7 +28,7 @@ O projeto foi desenvolvido utilizando Golang como linguagem de programação, fr
 
 ## 📸 Imagens
 
-### *imagens serão adicionadas em breve e de acordo com o progresso do projeto*
+![primeira tabela](https://private-user-images.githubusercontent.com/222334300/693985165-a1bd896e-f9e5-4de7-94b5-39233ce059b8.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTM3Mzg5NjUsIm5iZiI6MTc5MzczODY2NSwicGF0aCI6Ii8yMjIzMzQzMDAvNjkzOTg1MTY1LWExYmQ4OTZlLWY5ZTUtNGRlNy05NGI1LTM5MjMzY2UwNTliOC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYxMTAzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MTEwM1QyMDQ0MjVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0wZmE3YjA3NTc2MjlkZmEwNzBlZjQxOGY5YWQxMDNkYWU0YWQ2YTgxOTA0M2EzODNhMDQ2YWVkYTAzN2E5ZDgyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.A-JdrxRGVCtsIqGc0P9oYPnuC4Lids61E_ThzryEV_k)
 
 ---
 
@@ -36,7 +36,7 @@ O projeto foi desenvolvido utilizando Golang como linguagem de programação, fr
 
 - [💻 Golang](https://go.dev/dl/)
 - [📦 Bubbletea](https://github.com/charmbracelet/bubbletea)
-- [📦 World Time API](https://timeapi.world/)
+- [📦 World Time API](https://time.now/developer/)
 - [📦 Fmt](https://pkg.go.dev/cmd/fmt)
 - [📦 Time](https://pkg.go.dev/time)
 
