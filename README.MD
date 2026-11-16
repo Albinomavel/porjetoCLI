@@ -48,5 +48,7 @@ Para compilar e gerar o executável do projeto:
 
 ```bash
 go build -o projectCLI main.go
+```
 
+### Logo em seguida será criado um binário quevocê deve criar um atalho, assim facilitando o ciclo de abertura do prompt de comando
 ---
